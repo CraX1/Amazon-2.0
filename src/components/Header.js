@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import SearchIcon from '../svg/SearchIcon'
 import ShoppingCartIcon from '../svg/ShoppingCartIcon'
+import MenuBarIcon from '../svg/MenuBarIcon'
 function Header() {
   return (
     <header>
@@ -39,7 +40,21 @@ function Header() {
       </div>
 
       {/* bottom nav */}
-      <div></div>
+      <div className='flex items-center space-x-3 p-2 pl-6 text-white text-sm bg-amazon_blue-light'>
+        <p className='link flex items-center gap-1'>
+          <MenuBarIcon />
+          All
+        </p>
+        <p className='link'>Amazon Business</p>
+        <p className='link'>Prime Video</p>
+        <p className='link'>Today's Deals</p>
+        <p className='link hidden md:inline-flex'>Electronics</p>
+        <p className='link hidden md:inline-flex'>Food & Grocery</p>
+        <p className='link hidden md:inline-flex'>Prime</p>
+        <p className='link hidden md:inline-flex'>Buy Again</p>
+        <p className='link hidden lg:inline-flex'>Shopper Toolkit</p>
+        <p className='link hidden lg:inline-flex'>Health & Personal Care</p>
+      </div>
     </header>
   )
 }
