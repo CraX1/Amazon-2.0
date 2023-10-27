@@ -1,11 +1,14 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
-import StarIcon from '../svg/StarIcon'
+import dynamic from 'next/dynamic';
 import Currency from 'react-currency-formatter';
 import { useDispatch } from 'react-redux';
 import { addToBasket } from '../slices/basketSlice';
 const MAX_RATING = 5;
 const MIN_RATING = 1;
+const DynamicStarIcon = dynamic(() => import('../svg/StarIcon'), {
+    ssr: false, // Set ssr to false to enable client-side rendering
+});
 const Product = ({ productDetails }) => {
     const dispatch = useDispatch();
     const { id, title, price, category, description, image } = productDetails
@@ -30,7 +33,7 @@ const Product = ({ productDetails }) => {
 
             <div className='flex'>
                 {Array.from({ length: rating }, (_, i) => (
-                    <StarIcon key={i} />
+                    <DynamicStarIcon key={i} />
                 ))}
             </div>
 
