@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import SearchIcon from '../svg/SearchIcon'
 import ShoppingCartIcon from '../svg/ShoppingCartIcon'
 import MenuBarIcon from '../svg/MenuBarIcon'
