@@ -1,9 +1,10 @@
-import Image from 'next/image'
+
 import React, { useState } from 'react'
 import dynamic from 'next/dynamic';
 import Currency from 'react-currency-formatter';
 import { useDispatch } from 'react-redux';
 import { addToBasket } from '../slices/basketSlice';
+import Image from 'next/image';
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 const DynamicStarIcon = dynamic(() => import('../svg/StarIcon'), {
@@ -27,7 +28,10 @@ const Product = ({ productDetails }) => {
             <p className='absolute right-2 top-2 text-xs italic text-gray-400'>
                 {category}
             </p>
-            <Image src={image} width={200} height={200} objectFit='contain' />
+            {/* <div className=' h-full'> */}
+            <Image src={image} width={100} height={200} className=' w-96 h-48 self-center object-contain' />
+
+            {/* </div> */}
 
             <h4 className='my-3'>{title}</h4>
 
