@@ -23,10 +23,6 @@ Run commands
 3) ```yarn run dev```
 
 
-### If you see the window below then you are set to build AMAZON 2.0!
-
-![Template Screenshot](TemplateScreenshot.jpg?raw=true "Template Screenshot")
-
 Now since we are using Next Auth and using google as provider we will be-
 1) Setting up firebase project for this and use the config in the firebase.js
 2) To use google authentication we can get the Google_id and Secret_key from the Autthentication section of Firebase
@@ -50,3 +46,14 @@ In summary, this code sets up a promise (stripePromise) that loads the Stripe cl
 6. you can add that key in the next.config file and remember doing it only for the public key
 7. Create a checkout_session file under your api folder to fetch server details and basically backend work
 9. use axios to make network api calls
+
+
+//webhooks
+so when we checkout-> stripe checkout session is created and after success-> we move to the succeess page -> and in between this a webhook is fired and when this gets fired we need to verify how do we know the event is from Stripe... so we have certificates for that
+
+Now services like Stripe use webhooks to notify your server about payment events, such as successful payments or failed.
+=> add mircro library to use buffer and firebase-admin library
+we are using firebase-admin as it runs on server side (as its secure) and we can interact with the database through this sdk
+To get the firebase sdk config you need go to firebase and project settings-> service accounts -> generate new private key and copy that file to this project
+Your private key gives access to your project's Firebase services.
+
