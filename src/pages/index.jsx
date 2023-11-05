@@ -2,6 +2,7 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import ProductFeed from "../components/ProductFeed";
+import { getSession } from "next-auth/react";
 
 export default function Home({ products }) {
   return (
@@ -19,16 +20,18 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps(context) {
-  const products = await fetch('https://fakestoreapi.com/products')
-    .then(res => res.json())
+  const session = await getSession(context);
+  const products = await fetch("https://fakestoreapi.com/products").then(
+    (res) => res.json()
+  );
 
   return {
     props: {
-      products
-    }
-  }
+      products,
+      session,
+    },
+  };
 }
-
 
 // Server-Side Rendering (SSR) in Next.js works by rendering React components on the server rather than in the client's browser.
 // Here's a high-level overview of how SSR in Next.js works:
@@ -62,8 +65,6 @@ export async function getServerSideProps(context) {
 // - **Dynamic Data**: SSR allows for dynamic data fetching, meaning the data displayed can vary from request to request based on user-specific information.
 
 // It's important to choose the appropriate data-fetching method (e.g., `getServerSideProps`, `getStaticProps`) based on your use case and performance requirements. SSR is particularly useful for content that changes frequently or requires server-side data processing.
-
-
 
 // getServerSideProps
 
